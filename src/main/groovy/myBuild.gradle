@@ -1,0 +1,23 @@
+// 给Project添加两个Configuration
+configurations {
+    compile
+    testCompile
+}
+
+// 在不同的Configuration中添加依赖项
+dependencies {
+    add('compile', 'com.demo:module0')
+    compile 'com.demo:module1' // 外部Module依赖
+    testCompile project(path: ":library") // Project依赖
+    compile('com.demo:module2') { // 支持Closure配置
+        transitive = false
+    }
+    debugCompile 'com.demo:module3' // 没有这个Configuration，会报错
+}
+
+// 其他变式写法
+dependencies.compile 'com.demo:module4'
+project.dependencies.compile 'com.demo:module5'
+project.dependencies {
+    compile 'com.demo:module6'
+}
