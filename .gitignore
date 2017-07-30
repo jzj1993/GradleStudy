@@ -3,5 +3,5 @@
 .gradle
 .DS_Store
 /local.properties
-/build
+build/
 /captures

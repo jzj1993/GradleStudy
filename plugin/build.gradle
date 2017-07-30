@@ -1,0 +1,10 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy() // Groovy支持(本地)
+    compile gradleApi() // GradleAPI支持
+}

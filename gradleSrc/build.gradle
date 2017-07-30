@@ -1,0 +1,8 @@
+apply plugin: 'groovy'
+
+dependencies {
+//    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile localGroovy() // Groovy支持(本地)
+    compile gradleApi() // GradleAPI支持
+    compile 'com.android.tools.build:gradle:2.3.3' // Android插件
+}

@@ -1,17 +1,27 @@
-apply plugin: "groovy"
-
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-//    compile 'org.codehaus.groovy:groovy-all:2.3.11'
-    compile localGroovy() // Groovy支持(本地)
-    compile gradleApi() // GradleAPI支持
-    compile 'com.android.tools.build:gradle:2.3.3'
+// 简单插件示例
+apply from: 'simple_hello_plugin.gradle'
+
+hello {
+    enable = true
+    text = 'Gradle'
 }
 
-configurations {
-    compile1
-    compile2
+// 独立工程开发插件示例
+buildscript {
+    dependencies {
+        classpath files('plugin.jar')
+    }
+}
+
+apply plugin: 'greeting'
+
+greet {
+    enable = true
+    text = 'Plugin'
 }

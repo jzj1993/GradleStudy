@@ -1,0 +1,20 @@
+apply plugin: HelloPlugin
+
+class HelloExtension {
+    Boolean enable = true
+    String text = ''
+}
+
+class HelloPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project project) {
+        project.extensions.create('hello', HelloExtension)
+        project.task('welcome') {
+            doLast {
+                HelloExtension ext = project.extensions.hello;
+                println ext.enable ? "Hello ${ext.text}!" : 'HelloPlugin is disabled.'
+            }
+        }
+    }
+}
